@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Savies — Политика конфиденциальности · Privacy Policy</title>
+<meta name="description" content="Как Savies обращается с вашими данными. How Savies handles your data.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+<script>
+  // Язык — как в приложении: русский для ru и языков Беларуси и Центральной Азии, остальным английский;
+  // #ru или #en в адресе — выбран явно.
+  (function () {
+    var root = document.documentElement;
+    var phone = ((navigator.languages && navigator.languages[0]) || navigator.language || '').slice(0, 2).toLowerCase();
+    function pick() {
+      var h = location.hash.slice(1);
+      return h === 'ru' || h === 'en' ? h : ['ru', 'be', 'kk', 'ky', 'uz', 'tg'].indexOf(phone) >= 0 ? 'ru' : 'en';
+    }
+    function apply() { var l = pick(); root.setAttribute('data-lang', l); root.lang = l; }
+    apply();
+    addEventListener('hashchange', function () { apply(); scrollTo(0, 0); });
+    // на соседнюю страницу — с тем же языком
+    addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*=".html"]');
+      if (a) a.setAttribute('href', a.getAttribute('href').split('#')[0] + '#' + root.lang);
+    });
+  })();
+</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="icon.png" alt="">Savies</a>
+  <nav class="langs"><a href="#ru" data-lang="ru">Русский</a><a href="#en" data-lang="en">English</a></nav>
+</header>
+<main>
+
+<article lang="ru">
+  <h1>Политика конфиденциальности</h1>
+  <p class="date">Действует с 28 октября 2026 г.</p>
+
+  <div class="summary">
+    <p><strong>Коротко</strong></p>
+    <ul>
+      <li>Аккаунта нет: мы не спрашиваем ни имени, ни почты, ни телефона.</li>
+      <li>Ваша библиотека хранится только на вашем iPhone.</li>
+      <li>ИИ работает, только если вы его включили. Тогда посты, которые вы сохраняете, и запросы поиска уходят на сервер Savies и оттуда — в ИИ Google Gemini и OpenAI через OpenRouter. Ни сервер, ни ИИ их не хранят, ИИ на них не учится.</li>
+      <li>Скрытые папки не покидают телефон никогда.</li>
+      <li>Ни рекламы, ни трекинга, ни аналитики. Мы не продаём ваши данные.</li>
+    </ul>
+  </div>
+
+  <h2>Кто мы</h2>
+  <p>Приложение Savies разрабатывает Azat Kerimkulov (дальше — «мы»). По любым вопросам о данных пишите на <a href="mailto:kerimkulovazat%2Bsavies@gmail.com">kerimkulovazat+savies@gmail.com</a>.</p>
+
+  <h2>Что хранится на телефоне</h2>
+  <p>Всё, что вы сохраняете, — посты, ссылки, заметки, фото, видео, файлы, папки, места, напоминания — и настройки приложения. Это лежит в памяти Savies на iPhone; её видят только само приложение, его окно «Поделиться» и виджет. Копии у нас нет.</p>
+  <p>Код скрытых папок не хранится даже на телефоне: там лежит только случайная «соль» и хеш SHA-256 — по ним можно проверить введённый код, но нельзя узнать его.</p>
+  <p>Удалите приложение — удалится и библиотека. Если на iPhone включены резервные копии (в iCloud или на компьютере), iOS может включать в них данные приложений; к этим копиям у нас доступа нет.</p>
+
+  <h2>Что и когда уходит с телефона</h2>
+
+  <h3>ИИ — только если вы его включили</h3>
+  <p>ИИ включается отдельным согласием — в приветствии или в «Папки» → «Ещё» → «ИИ»; там же его можно выключить. Пока ИИ выключен, ничего из этого раздела не отправляется: Savies сохраняет посты, папки вы выбираете сами, поиск идёт по словам на телефоне.</p>
+  <p>Когда ИИ включён, на сервер Savies отправляются:</p>
+  <ul>
+    <li>содержимое поста, который вы сохраняете: ссылка, текст, картинка, видео или голосовое сообщение;</li>
+    <li>краткий срез библиотеки — чтобы выбрать подходящую папку и заметить повтор: названия папок, названия постов и их «отпечатки смысла» (наборы чисел, по которым посты сравниваются между собой);</li>
+    <li>запросы поиска — текстом или записью голоса. Для умного поиска и вопросов к библиотеке — ещё краткое описание подходящих постов (название, суть, папка); для перевода — текст поста;</li>
+    <li>служебное: номер установки (о нём ниже) и язык интерфейса.</li>
+  </ul>
+  <p>Сервер Savies работает на платформе Supabase. Он передаёт содержимое в сторонний ИИ через сервис OpenRouter:</p>
+  <ul>
+    <li><strong>Google Gemini</strong> — понимает пост, придумывает название и краткую суть, выбирает папку, находит даты и места, расшифровывает голос, отвечает на вопросы, переводит;</li>
+    <li><strong>OpenAI</strong> (модель text-embedding-3-small) — превращает название и суть поста или ваш запрос в «отпечаток смысла».</li>
+  </ul>
+  <p>Для Savies в OpenRouter включено ограничение: запросы получают только провайдеры, которые не сохраняют данные запросов и не обучают на них модели. Ответ ИИ возвращается на телефон. Сервер не хранит посты, картинки, записи голоса и запросы и не пишет их содержимое в журналы.</p>
+  <p>Как у любого сервера, у платформы Supabase есть технические журналы обращений (например, время и IP-адрес). Мы используем их только для того, чтобы сервер работал и был защищён.</p>
+
+  <h3>Чтение ссылок</h3>
+  <p>Чтобы сохранить подпись, обложку и аватарку автора, приложение само открывает публичную страницу поста по ссылке — так же, как это сделал бы браузер. Это происходит и без ИИ. Когда ИИ включён, ту же публичную страницу (Instagram, Threads, YouTube, сайты) открывает и сервер Savies, чтобы прочитать подпись. Закрытые страницы, требующие входа, мы не читаем.</p>
+
+  <h3>Номер установки</h3>
+  <p>При первом запуске приложение создаёт случайный номер (UUID) и хранит его на телефоне. Это не рекламный идентификатор и не номер устройства; он не связан с вашим именем, почтой или Apple ID. По нему сервер считает бесплатные пробы и узнаёт у RevenueCat, есть ли у вас Savies Plus.</p>
+
+  <h3>Счётчик бесплатных проб</h3>
+  <p>Бесплатно доступны 20 разборов ИИ и 5 голосовых поисков. Чтобы их считать, сервер хранит одну запись: номер установки, сколько разборов и голосовых поисков потрачено, внутренние номера последних разобранных постов (чтобы не засчитать один пост дважды) и время создания и последнего изменения записи. Содержимого постов там нет.</p>
+
+  <h3>Подписка Savies Plus</h3>
+  <p>Оплату проводит Apple — данные вашей карты и Apple ID нам не видны. Чтобы приложение и сервер знали, что подписка оформлена, мы используем сервис RevenueCat (RevenueCat, Inc.): он получает от App Store сведения о покупке — какая подписка, когда оформлена, до какого числа действует — и хранит их под номером установки. <a href="https://www.revenuecat.com/privacy">Политика RevenueCat</a>.</p>
+
+  <h3>Уведомления</h3>
+  <p>Если вы разрешили уведомления, окно «Поделиться» отправляет вместе с постом адрес вашего iPhone для уведомлений Apple (токен APNs) — чтобы сервер прислал «Сохранил&nbsp;…&nbsp;в&nbsp;…», когда ИИ разберёт пост. Токен не хранится; уведомление доставляет Apple. Напоминания «Не пропустить» и «Неделя в Savies» ставит сам iPhone, без сервера.</p>
+
+  <h3>Места на карте</h3>
+  <p>Чтобы поставить место из поста на карту, телефон ищет его координаты в Apple Картах, а если там не нашлось — в OpenStreetMap (сервис Nominatim). Уходит только название места, адрес и город из поста. Ваше местоположение Savies не запрашивает и не отправляет.</p>
+
+  <h3>Скрытые папки</h3>
+  <p>Посты из скрытых папок не уходят с телефона никогда: ни на сервер, ни в ИИ, ни в уведомления. Пока скрытые папки закрыты, их посты не видны на главной, в поиске и в виджете.</p>
+
+  <h3>Другие приложения</h3>
+  <p>Когда вы открываете пост, ссылку или место в другом приложении (Instagram, Safari, Apple или Google Карты, 2ГИС), дальше действуют правила этого приложения.</p>
+
+  <h2>Чего в Savies нет</h2>
+  <ul>
+    <li>аккаунтов и входа;</li>
+    <li>рекламы, трекинга и рекламного идентификатора (IDFA);</li>
+    <li>сторонней аналитики и сбора отчётов о сбоях.</li>
+  </ul>
+  <p>Мы не продаём данные и не передаём их никому, кроме сервисов, названных выше, и только для работы функций Savies.</p>
+
+  <h2>Сколько хранится</h2>
+  <ul>
+    <li>Библиотека — на вашем телефоне, пока вы её не удалите.</li>
+    <li>Посты, записи голоса и запросы — только пока обрабатывается запрос; ни сервер, ни ИИ их не сохраняют.</li>
+    <li>Счётчик проб — пока работает Savies. По нему нельзя понять, кто вы.</li>
+    <li>Сведения о подписке — в RevenueCat, пока они нужны для подписки и учёта.</li>
+  </ul>
+
+  <h2>Ваш выбор</h2>
+  <ul>
+    <li>Выключить ИИ — «Папки» → «Ещё» → «ИИ».</li>
+    <li>Удалить посты — в приложении; удалить всё — удалить приложение.</li>
+    <li>Отказаться от уведомлений — в «Настройках» iPhone → Savies.</li>
+    <li>Вопросы, запросы на доступ к данным или их удаление — на <a href="mailto:kerimkulovazat%2Bsavies@gmail.com">kerimkulovazat+savies@gmail.com</a>. Аккаунта нет, поэтому найти ваши данные по имени или почте мы не можем: на сервере есть только счётчик под случайным номером.</li>
+  </ul>
+
+  <h2>Дети</h2>
+  <p>Savies не предназначен специально для детей младше 13 лет, и мы сознательно не собираем их данные.</p>
+
+  <h2>Изменения</h2>
+  <p>Если политика изменится, мы обновим эту страницу и дату в её начале.</p>
+
+  <h2>Контакты</h2>
+  <p>Azat Kerimkulov · <a href="mailto:kerimkulovazat%2Bsavies@gmail.com">kerimkulovazat+savies@gmail.com</a></p>
+</article>
+
+<article lang="en">
+  <h1>Privacy Policy</h1>
+  <p class="date">Effective October 28, 2026</p>
+
+  <div class="summary">
+    <p><strong>In short</strong></p>
+    <ul>
+      <li>No account: we never ask for your name, email or phone number.</li>
+      <li>Your library is stored only on your iPhone.</li>
+      <li>AI works only if you turn it on. Then the posts you save and your search requests go to the Savies server and from there to Google Gemini and OpenAI via OpenRouter. Neither the server nor the AI keeps them, and the AI doesn’t learn from them.</li>
+      <li>Hidden folders never leave your phone.</li>
+      <li>No ads, no tracking, no analytics. We don’t sell your data.</li>
+    </ul>
+  </div>
+
+  <h2>Who we are</h2>
+  <p>Savies is developed by Azat Kerimkulov (“we”). For any question about your data, email <a href="mailto:kerimkulovazat%2Bsavies@gmail.com">kerimkulovazat+savies@gmail.com</a>.</p>
+
+  <h2>What stays on your phone</h2>
+  <p>Everything you save — posts, links, notes, photos, videos, files, folders, places, reminders — and your app settings. It lives in Savies’ storage on your iPhone, which only the app itself, its Share window and its widget can see. We don’t have a copy.</p>
+  <p>The hidden folders code isn’t stored even on the phone: only a random “salt” and a SHA-256 hash are kept — enough to check the code you enter, but not to recover it.</p>
+  <p>Delete the app and the library is deleted with it. If iPhone backups are on (iCloud or a computer), iOS may include app data in them; we have no access to those backups.</p>
+
+  <h2>What leaves your phone, and when</h2>
+
+  <h3>AI — only if you turn it on</h3>
+  <p>AI is turned on with a separate consent — during welcome or in Folders → More → AI, where you can also turn it off. While AI is off, nothing in this section is sent: Savies still saves your posts, you pick folders yourself, and search works by words on your phone.</p>
+  <p>When AI is on, the Savies server receives:</p>
+  <ul>
+    <li>the content of the post you save: the link, text, image, video or voice message;</li>
+    <li>a short outline of your library, to pick the right folder and spot duplicates: folder names, post titles and their “meaning fingerprints” (sets of numbers used to compare posts);</li>
+    <li>search requests, typed or recorded by voice. For smart search and questions to your library, also a short description of matching posts (title, summary, folder); for translation, the post’s text;</li>
+    <li>technical details: the install number (see below) and the interface language.</li>
+  </ul>
+  <p>The Savies server runs on the Supabase platform. It passes the content to third-party AI through the OpenRouter service:</p>
+  <ul>
+    <li><strong>Google Gemini</strong> — understands the post, writes a title and a short summary, picks a folder, finds dates and places, transcribes voice, answers questions, translates;</li>
+    <li><strong>OpenAI</strong> (the text-embedding-3-small model) — turns a post’s title and summary, or your request, into a “meaning fingerprint”.</li>
+  </ul>
+  <p>Savies’ OpenRouter setup only routes requests to providers that don’t store request data and don’t train models on it. The AI’s answer goes back to your phone. The server doesn’t store posts, images, voice recordings or requests, and doesn’t write their content to logs.</p>
+  <p>Like any server, the Supabase platform keeps technical request logs (such as time and IP address). We use them only to keep the server running and secure.</p>
+
+  <h3>Reading links</h3>
+  <p>To save a post’s caption, cover and the author’s picture, the app itself opens the post’s public page — just like a browser would. This happens even without AI. When AI is on, the Savies server also opens the same public page (Instagram, Threads, YouTube, websites) to read the caption. We don’t read pages that require signing in.</p>
+
+  <h3>Install number</h3>
+  <p>On first launch the app creates a random number (UUID) and keeps it on your phone. It isn’t an advertising identifier or a device ID, and it isn’t linked to your name, email or Apple ID. The server uses it to count free tries and to ask RevenueCat whether you have Savies Plus.</p>
+
+  <h3>Free tries counter</h3>
+  <p>Savies includes 20 free AI reads and 5 free voice searches. To count them, the server keeps one record: the install number, how many reads and voice searches were used, internal numbers of the most recently read posts (so one post isn’t counted twice), and when the record was created and last changed. It contains no post content.</p>
+
+  <h3>Savies Plus subscription</h3>
+  <p>Payment is handled by Apple — we never see your card or Apple ID details. So that the app and the server know you’ve subscribed, we use RevenueCat (RevenueCat, Inc.): it receives purchase details from the App Store — which subscription, when it started and when it renews or ends — and keeps them under the install number. <a href="https://www.revenuecat.com/privacy">RevenueCat’s privacy policy</a>.</p>
+
+  <h3>Notifications</h3>
+  <p>If you allow notifications, the Share window sends your iPhone’s Apple push address (an APNs token) along with the post, so the server can send “Saved&nbsp;…&nbsp;to&nbsp;…” once AI has read it. The token isn’t stored; Apple delivers the notification. “Don’t miss” reminders and “Your week in Savies” are scheduled by the iPhone itself, without the server.</p>
+
+  <h3>Places on the map</h3>
+  <p>To put a place from a post on the map, the phone looks up its coordinates in Apple Maps, and if nothing is found, in OpenStreetMap (the Nominatim service). Only the place’s name, address and city from the post are sent. Savies never asks for or sends your location.</p>
+
+  <h3>Hidden folders</h3>
+  <p>Posts in hidden folders never leave your phone: not to the server, not to AI, not in notifications. While hidden folders are locked, their posts don’t appear on the home screen, in search or in the widget.</p>
+
+  <h3>Other apps</h3>
+  <p>When you open a post, link or place in another app (Instagram, Safari, Apple or Google Maps, 2GIS), that app’s own rules apply.</p>
+
+  <h2>What Savies doesn’t have</h2>
+  <ul>
+    <li>accounts or sign-in;</li>
+    <li>ads, tracking or the advertising identifier (IDFA);</li>
+    <li>third-party analytics or crash reporting.</li>
+  </ul>
+  <p>We don’t sell data and don’t share it with anyone except the services named above, and only to make Savies’ features work.</p>
+
+  <h2>How long data is kept</h2>
+  <ul>
+    <li>Your library — on your phone, until you delete it.</li>
+    <li>Posts, voice recordings and requests — only while the request is being processed; neither the server nor the AI keeps them.</li>
+    <li>The free tries counter — while Savies operates. It can’t tell who you are.</li>
+    <li>Subscription details — at RevenueCat, as long as needed for the subscription and record-keeping.</li>
+  </ul>
+
+  <h2>Your choices</h2>
+  <ul>
+    <li>Turn AI off — Folders → More → AI.</li>
+    <li>Delete posts in the app; delete everything by deleting the app.</li>
+    <li>Turn notifications off — iPhone Settings → Savies.</li>
+    <li>Questions, or requests to access or delete data — <a href="mailto:kerimkulovazat%2Bsavies@gmail.com">kerimkulovazat+savies@gmail.com</a>. There’s no account, so we can’t look up your data by name or email: the server only has a counter under a random number.</li>
+  </ul>
+
+  <h2>Children</h2>
+  <p>Savies isn’t specifically directed at children under 13, and we don’t knowingly collect their data.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, we’ll update this page and the date at the top.</p>
+
+  <h2>Contact</h2>
+  <p>Azat Kerimkulov · <a href="mailto:kerimkulovazat%2Bsavies@gmail.com">kerimkulovazat+savies@gmail.com</a></p>
+</article>
+
+</main>
+<footer>
+  <a href="index.html">Savies</a><a href="terms.html">Условия · Terms</a><a href="support.html">Поддержка · Support</a>
+</footer>
+</body>
+</html>

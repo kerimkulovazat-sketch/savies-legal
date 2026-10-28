@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Savies — Поддержка · Support</title>
+<meta name="description" content="Ответы на частые вопросы о Savies и почта поддержки. Savies FAQ and support email.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+<script>
+  // Язык — как в приложении: русский для ru и языков Беларуси и Центральной Азии, остальным английский;
+  // #ru или #en в адресе — выбран явно.
+  (function () {
+    var root = document.documentElement;
+    var phone = ((navigator.languages && navigator.languages[0]) || navigator.language || '').slice(0, 2).toLowerCase();
+    function pick() {
+      var h = location.hash.slice(1);
+      return h === 'ru' || h === 'en' ? h : ['ru', 'be', 'kk', 'ky', 'uz', 'tg'].indexOf(phone) >= 0 ? 'ru' : 'en';
+    }
+    function apply() { var l = pick(); root.setAttribute('data-lang', l); root.lang = l; }
+    apply();
+    addEventListener('hashchange', function () { apply(); scrollTo(0, 0); });
+    // на соседнюю страницу — с тем же языком
+    addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*=".html"]');
+      if (a) a.setAttribute('href', a.getAttribute('href').split('#')[0] + '#' + root.lang);
+    });
+  })();
+</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="icon.png" alt="">Savies</a>
+  <nav class="langs"><a href="#ru" data-lang="ru">Русский</a><a href="#en" data-lang="en">English</a></nav>
+</header>
+<main>
+
+<article lang="ru">
+  <h1>Поддержка</h1>
+  <p class="date">Обновлено 28 октября 2026 г.</p>
+
+  <div class="summary">
+    <p>Не нашли ответ, что-то не работает или есть идея? Напишите на <a href="mailto:kerimkulovazat%2Bsavies@gmail.com?subject=Savies"><strong>kerimkulovazat+savies@gmail.com</strong></a> — по-русски или по-английски. Если можно, приложите скриншот и модель iPhone.</p>
+  </div>
+
+  <h2>Сохранение</h2>
+  <div class="card">
+    <details open>
+      <summary>Как сохранить пост через «Поделиться»?</summary>
+      <ol>
+        <li>В Instagram, Threads, Safari или любом другом приложении нажмите «Поделиться».</li>
+        <li>Пролистайте ряд приложений и выберите Savies. Если его нет — нажмите «Ещё» и включите Savies.</li>
+        <li>Нажмите «Пусть ИИ разложит» или выберите папку. Пост сохранится сразу, а ИИ дочитает его в фоне и пришлёт уведомление «Сохранил&nbsp;…&nbsp;в&nbsp;…».</li>
+      </ol>
+    </details>
+    <details>
+      <summary>Можно сохранять из самого приложения?</summary>
+      <p>Да: нажмите «+» и вставьте ссылку или текст — Savies сам поймёт, что это, — или выберите «Фото и видео» либо «Файл».</p>
+    </details>
+    <details>
+      <summary>Пост не открывается или аккаунт закрытый</summary>
+      <p>Сделайте скриншот и добавьте его к сохранёнке: ИИ прочитает его, и он останется, даже если пост удалят. У поста, который не прочитался, есть «Прочитать ещё раз».</p>
+    </details>
+  </div>
+
+  <h2>ИИ</h2>
+  <div class="card">
+    <details>
+      <summary>Как включить или выключить ИИ?</summary>
+      <p>«Папки» → «Ещё» → «ИИ». Без ИИ Savies тоже работает: сохраняет всё, папки вы выбираете сами, поиск идёт по словам.</p>
+    </details>
+    <details>
+      <summary>Что получает ИИ?</summary>
+      <p>Только когда ИИ включён: посты, которые вы сохраняете, и запросы поиска. Они уходят на сервер Savies и в ИИ Google Gemini и OpenAI через OpenRouter; никто их не хранит, ИИ на них не учится. Посты из скрытых папок не уходят никогда. Подробнее — в <a href="privacy.html">политике конфиденциальности</a>.</p>
+    </details>
+    <details>
+      <summary>ИИ положил пост не туда</summary>
+      <p>Долгое нажатие на пост → «Переместить в…». ИИ выбирает папку по тому, что в ней уже лежит: чем больше постов разложено, тем точнее он угадывает.</p>
+    </details>
+  </div>
+
+  <h2>Скрытые папки</h2>
+  <div class="card">
+    <details>
+      <summary>Как скрыть папку?</summary>
+      <p>Долгое нажатие на папку → «Скрыть папку». В первый раз придумайте код из 4 цифр и, если хотите, включите Face ID. Скрытые папки открываются кнопкой «Скрытые папки» внизу экрана «Папки» и закрываются сами, когда вы выходите из приложения. Их посты не видны на главной, в поиске и виджете и никогда не уходят на сервер.</p>
+    </details>
+    <details>
+      <summary>Забыли код?</summary>
+      <p>На экране кода нажмите «Забыли код?», подтвердите кодом-паролем iPhone и придумайте новый код. Папки и посты останутся на месте.</p>
+    </details>
+    <details>
+      <summary>Как сменить код или выключить Face ID?</summary>
+      <p>«Папки» → «Ещё» → «Код скрытых папок».</p>
+    </details>
+  </div>
+
+  <h2>Подписка Savies Plus</h2>
+  <div class="card">
+    <details>
+      <summary>Что бесплатно, а что в Plus?</summary>
+      <p>Бесплатно: сохранять сколько угодно, 20 разборов ИИ и 5 голосовых поисков за всё время. С Plus ИИ разбирает все новые посты без счётчика, и открываются голосовой поиск, «Спросить у библиотеки», карта мест, перевод постов и новые скрытые папки. Годовая подписка начинается с 7 дней бесплатно.</p>
+    </details>
+    <details>
+      <summary>Как оформить?</summary>
+      <p>Нажмите «✦ Plus» вверху главного экрана или «Папки» → «Ещё» → «Savies Plus».</p>
+    </details>
+    <details>
+      <summary>Как отменить?</summary>
+      <p>«Настройки» iPhone → ваше имя → «Подписки» → Savies. Plus работает до конца оплаченного периода; отмена во время пробной недели — без списания.</p>
+    </details>
+    <details>
+      <summary>Новый iPhone или переустановили приложение</summary>
+      <p>Откройте окно Savies Plus и нажмите «Восстановить покупки» — с тем же Apple ID, которым оформляли подписку.</p>
+    </details>
+    <details>
+      <summary>Как вернуть деньги?</summary>
+      <p>Возвраты оформляет Apple: <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+    </details>
+  </div>
+
+  <h2>Другое</h2>
+  <div class="card">
+    <details>
+      <summary>Где хранится библиотека?</summary>
+      <p>Только на вашем iPhone — копии у нас нет. При переходе на новый iPhone она переезжает вместе с данными телефона (резервная копия iCloud или перенос с iPhone на iPhone). Удалите приложение — удалится и библиотека.</p>
+    </details>
+    <details>
+      <summary>Не приходят уведомления «Сохранил&nbsp;…&nbsp;в&nbsp;…»</summary>
+      <p>Проверьте, что ИИ включён («Папки» → «Ещё» → «ИИ») и уведомления разрешены: «Настройки» iPhone → Savies → «Уведомления».</p>
+    </details>
+    <details>
+      <summary>Как сменить язык?</summary>
+      <p>Savies говорит на языке телефона. Сменить только для Savies: «Настройки» iPhone → Savies → «Язык».</p>
+    </details>
+  </div>
+
+  <p class="muted">Ещё: <a href="privacy.html">Конфиденциальность</a> · <a href="terms.html">Условия использования</a></p>
+</article>
+
+<article lang="en">
+  <h1>Support</h1>
+  <p class="date">Updated October 28, 2026</p>
+
+  <div class="summary">
+    <p>Didn’t find an answer, something’s broken, or have an idea? Email <a href="mailto:kerimkulovazat%2Bsavies@gmail.com?subject=Savies"><strong>kerimkulovazat+savies@gmail.com</strong></a> — in English or Russian. A screenshot and your iPhone model help.</p>
+  </div>
+
+  <h2>Saving</h2>
+  <div class="card">
+    <details open>
+      <summary>How do I save a post with Share?</summary>
+      <ol>
+        <li>In Instagram, Threads, Safari or any other app, tap Share.</li>
+        <li>Scroll the row of apps and pick Savies. If it’s not there, tap More and turn Savies on.</li>
+        <li>Tap “Let AI sort it” or pick a folder. The post is saved right away; AI finishes reading it in the background and sends a “Saved&nbsp;…&nbsp;to&nbsp;…” notification.</li>
+      </ol>
+    </details>
+    <details>
+      <summary>Can I save from inside the app?</summary>
+      <p>Yes: tap “+” and paste a link or text — Savies figures out what it is — or choose Photos &amp; videos or File.</p>
+    </details>
+    <details>
+      <summary>The post won’t open, or the account is private</summary>
+      <p>Take a screenshot and add it to the save: AI will read it, and it stays even if the post is deleted. A post that couldn’t be read has a “Read again” option.</p>
+    </details>
+  </div>
+
+  <h2>AI</h2>
+  <div class="card">
+    <details>
+      <summary>How do I turn AI on or off?</summary>
+      <p>Folders → More → AI. Savies works without AI too: it saves everything, you pick folders yourself, and search works by words.</p>
+    </details>
+    <details>
+      <summary>What does AI receive?</summary>
+      <p>Only when AI is on: the posts you save and your search requests. They go to the Savies server and to Google Gemini and OpenAI via OpenRouter; nobody keeps them, and the AI doesn’t learn from them. Posts in hidden folders are never sent. More in the <a href="privacy.html">Privacy Policy</a>.</p>
+    </details>
+    <details>
+      <summary>AI put a post in the wrong folder</summary>
+      <p>Long-press the post → “Move to…”. AI picks a folder by what’s already in it: the more posts are sorted, the better it guesses.</p>
+    </details>
+  </div>
+
+  <h2>Hidden folders</h2>
+  <div class="card">
+    <details>
+      <summary>How do I hide a folder?</summary>
+      <p>Long-press a folder → Hide folder. The first time, create a 4-digit code and, if you like, turn on Face ID. Open hidden folders with the Hidden folders button at the bottom of Folders; they lock again when you leave the app. Their posts don’t appear on the home screen, in search or in the widget, and are never sent to the server.</p>
+    </details>
+    <details>
+      <summary>Forgot the code?</summary>
+      <p>On the code screen, tap “Forgot code?”, confirm with your iPhone passcode and create a new code. Your folders and posts stay where they are.</p>
+    </details>
+    <details>
+      <summary>How do I change the code or turn off Face ID?</summary>
+      <p>Folders → More → Hidden folders code.</p>
+    </details>
+  </div>
+
+  <h2>Savies Plus subscription</h2>
+  <div class="card">
+    <details>
+      <summary>What’s free and what’s in Plus?</summary>
+      <p>Free: save as much as you like, plus 20 AI reads and 5 voice searches in total. With Plus, AI reads every new post with no counter, and you get voice search, Ask your library, the places map, post translation and new hidden folders. The yearly plan starts with a 7-day free trial.</p>
+    </details>
+    <details>
+      <summary>How do I subscribe?</summary>
+      <p>Tap “✦ Plus” at the top of the home screen, or Folders → More → Savies Plus.</p>
+    </details>
+    <details>
+      <summary>How do I cancel?</summary>
+      <p>iPhone Settings → your name → Subscriptions → Savies. Plus keeps working until the end of the paid period; cancel during the free week and you won’t be charged.</p>
+    </details>
+    <details>
+      <summary>New iPhone, or reinstalled the app</summary>
+      <p>Open the Savies Plus screen and tap Restore — using the Apple ID you subscribed with.</p>
+    </details>
+    <details>
+      <summary>How do I get a refund?</summary>
+      <p>Refunds are handled by Apple: <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+    </details>
+  </div>
+
+  <h2>Other</h2>
+  <div class="card">
+    <details>
+      <summary>Where is my library stored?</summary>
+      <p>Only on your iPhone — we don’t have a copy. When you move to a new iPhone, it moves with your phone’s data (iCloud backup or iPhone-to-iPhone transfer). Delete the app and the library is deleted too.</p>
+    </details>
+    <details>
+      <summary>“Saved&nbsp;…&nbsp;to&nbsp;…” notifications don’t arrive</summary>
+      <p>Check that AI is on (Folders → More → AI) and notifications are allowed: iPhone Settings → Savies → Notifications.</p>
+    </details>
+    <details>
+      <summary>How do I change the language?</summary>
+      <p>Savies follows your phone’s language. To change it just for Savies: iPhone Settings → Savies → Language.</p>
+    </details>
+  </div>
+
+  <p class="muted">Also: <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms of Use</a></p>
+</article>
+
+</main>
+</body>
+</html>

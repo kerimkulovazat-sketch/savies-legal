@@ -1,0 +1,174 @@
+/* Страницы Savies: политика, условия, поддержка. Цвета — как в приложении (lib/ui/theme.dart),
+   тема — по системе, ширина — под телефон. Без внешних шрифтов и скриптов. */
+:root {
+  color-scheme: light dark;
+  --bg: #F2F2F7;
+  --card: #FFFFFF;
+  --text: #000000;
+  --secondary: #6C6C70;
+  --separator: #E5E5EA;
+  --accent: #0A64D6;
+  --warm: #FFF4DE;
+  --warm-text: #6B5A3A;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18191B;
+    --card: #242528;
+    --text: #F2F2F3;
+    --secondary: #9C9EA3;
+    --separator: #3A3C40;
+    --accent: #4C9BFF;
+    --warm: #3A3122;
+    --warm-text: #E6CFA2;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.top {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 18px 16px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.2px;
+}
+.brand:hover { text-decoration: none; }
+.brand img { width: 30px; height: 30px; border-radius: 7px; }
+
+.langs { display: flex; gap: 4px; font-size: 15px; }
+.langs a {
+  padding: 5px 11px;
+  border-radius: 999px;
+  color: var(--secondary);
+}
+.langs a:hover { text-decoration: none; }
+html[data-lang="ru"] .langs a[data-lang="ru"],
+html[data-lang="en"] .langs a[data-lang="en"] {
+  background: var(--card);
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* язык выбирает скрипт в <head> (как в приложении — по языку телефона); без скрипта видны оба */
+html[data-lang="ru"] article[lang="en"],
+html[data-lang="en"] article[lang="ru"] { display: none; }
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+}
+
+article + article {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--separator);
+}
+html[data-lang] article + article { margin-top: 0; padding-top: 0; border-top: 0; }
+
+h1 {
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 18px 0 6px;
+}
+
+h2 {
+  font-size: 21px;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+  margin: 32px 0 8px;
+}
+
+h3 {
+  font-size: 17px;
+  margin: 22px 0 4px;
+}
+
+p, ul, ol { margin: 0 0 12px; }
+ul, ol { padding-left: 22px; }
+li { margin-bottom: 6px; }
+
+.date { color: var(--secondary); font-size: 15px; margin-bottom: 20px; }
+
+.summary {
+  background: var(--warm);
+  color: var(--warm-text);
+  border-radius: 14px;
+  padding: 14px 16px 4px;
+  margin: 16px 0 8px;
+}
+.summary strong { color: inherit; }
+
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 4px 16px;
+  margin: 12px 0;
+}
+
+details {
+  border-bottom: 1px solid var(--separator);
+  padding: 12px 0;
+}
+details:last-child { border-bottom: 0; }
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; float: right; color: var(--secondary); font-weight: 400; }
+details[open] summary::after { content: "−"; }
+details > :not(summary) { margin-top: 8px; }
+
+.links { list-style: none; padding: 0; }
+.links li { margin: 0; border-bottom: 1px solid var(--separator); }
+.links li:last-child { border-bottom: 0; }
+.links a { display: block; padding: 14px 0; font-size: 18px; }
+.links small { display: block; color: var(--secondary); font-size: 14px; margin-top: 2px; }
+
+code {
+  font: 0.9em ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: var(--card);
+  border-radius: 5px;
+  padding: 1px 5px;
+}
+
+.muted { color: var(--secondary); font-size: 15px; }
+
+footer {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+  color: var(--secondary);
+  font-size: 14px;
+}
+footer a { margin-right: 14px; }

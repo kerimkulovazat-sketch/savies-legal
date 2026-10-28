@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Savies</title>
+<meta name="description" content="Savies — всё, что хочется сохранить, в одном месте. Savies — everything worth saving, in one place.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+<script>
+  // Язык — как в приложении: русский для ru и языков Беларуси и Центральной Азии, остальным английский;
+  // #ru или #en в адресе — выбран явно.
+  (function () {
+    var root = document.documentElement;
+    var phone = ((navigator.languages && navigator.languages[0]) || navigator.language || '').slice(0, 2).toLowerCase();
+    function pick() {
+      var h = location.hash.slice(1);
+      return h === 'ru' || h === 'en' ? h : ['ru', 'be', 'kk', 'ky', 'uz', 'tg'].indexOf(phone) >= 0 ? 'ru' : 'en';
+    }
+    function apply() { var l = pick(); root.setAttribute('data-lang', l); root.lang = l; }
+    apply();
+    addEventListener('hashchange', function () { apply(); scrollTo(0, 0); });
+    // на соседнюю страницу — с тем же языком
+    addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*=".html"]');
+      if (a) a.setAttribute('href', a.getAttribute('href').split('#')[0] + '#' + root.lang);
+    });
+  })();
+</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="icon.png" alt="">Savies</a>
+  <nav class="langs"><a href="#ru" data-lang="ru">Русский</a><a href="#en" data-lang="en">English</a></nav>
+</header>
+<main>
+
+<article lang="ru">
+  <h1>Savies</h1>
+  <p>Всё, что хочется сохранить, — в одном месте. Посты, ссылки, фото и файлы сохраняются через «Поделиться», а ИИ раскладывает их по папкам. Библиотека живёт на вашем iPhone.</p>
+  <div class="card">
+    <ul class="links">
+      <li><a href="support.html">Поддержка<small>Ответы на частые вопросы и почта</small></a></li>
+      <li><a href="privacy.html">Политика конфиденциальности<small>Что хранится на телефоне и что уходит в ИИ</small></a></li>
+      <li><a href="terms.html">Условия использования<small>Подписка Savies Plus, пробная неделя, отмена</small></a></li>
+    </ul>
+  </div>
+  <p class="muted">Azat Kerimkulov · <a href="mailto:kerimkulovazat%2Bsavies@gmail.com">kerimkulovazat+savies@gmail.com</a></p>
+</article>
+
+<article lang="en">
+  <h1>Savies</h1>
+  <p>Everything worth saving, in one place. Save posts, links, photos and files with Share, and AI sorts them into folders. Your library lives on your iPhone.</p>
+  <div class="card">
+    <ul class="links">
+      <li><a href="support.html">Support<small>Frequently asked questions and email</small></a></li>
+      <li><a href="privacy.html">Privacy Policy<small>What stays on your phone and what goes to AI</small></a></li>
+      <li><a href="terms.html">Terms of Use<small>Savies Plus subscription, free trial, cancelling</small></a></li>
+    </ul>
+  </div>
+  <p class="muted">Azat Kerimkulov · <a href="mailto:kerimkulovazat%2Bsavies@gmail.com">kerimkulovazat+savies@gmail.com</a></p>
+</article>
+
+</main>
+</body>
+</html>
